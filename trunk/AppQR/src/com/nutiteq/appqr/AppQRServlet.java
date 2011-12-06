@@ -21,7 +21,7 @@ public class AppQRServlet extends HttpServlet {
 
 		if(qr != null && qr.equals("1")){
 			// request from mobile - do download, forward to correct url
-			if(ua.contains("iPhone")){
+			if(ua.contains("iPhone") || ua.contains("iPad") || ua.contains("iPod")){
 				log.info("forwarding to "+appleUrl);
 				resp.sendRedirect(resp.encodeRedirectURL(appleUrl));
 			}else if(ua.contains("Android")){
@@ -40,12 +40,9 @@ public class AppQRServlet extends HttpServlet {
 			resp.setContentType("text/html");
 			StringBuffer baseUrl = new StringBuffer("http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=");
 			StringBuffer selectorUrl = new StringBuffer("http://qrappdownload.appspot.com/appqr?qr=1");
-//			StringBuffer selectorUrl = new StringBuffer("http://localhost:8888/appqr?qr=1");
 			selectorUrl.append("&androidmarket=");
-//			selectorUrl.append(URLEncoder.encode(andUrl,"UTF-8"));
 			selectorUrl.append(andUrl);
 			selectorUrl.append("&appstore=");
-//			selectorUrl.append(URLEncoder.encode(appleUrl,"UTF-8"));
 			selectorUrl.append(appleUrl);
 			log.info("selectorUrl before encoding ="+selectorUrl.toString());
 			baseUrl.append(URLEncoder.encode(selectorUrl.toString(),"UTF-8"));
