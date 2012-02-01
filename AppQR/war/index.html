@@ -14,15 +14,25 @@
 
   <body>
     <h1>Single QR Code for your app download</h1>
-Provide your application download URLs in following form, and you'll get universal QR code which enables direct download from all the supported platforms.
+Replace sample URLs below with your application download URLs, and you'll get universal QR code which enables direct download from all the supported platforms. If platform is not supported, leave empty.
 <form action="appqr" method=GET>	
     <table>
       <tr>
-        <td>Android Market URL:</td><td><input type="text" name="androidmarket" value = "https://market.android.com/details?id=com.letsdoitworld.wastemapper" size=120/></td>        
+        <td>Android URL:</td><td><input type="text" name="androidmarket" value = "https://market.android.com/details?id=com.letsdoitworld.wastemapper" size=120/></td>        
       </tr>
       <tr>
-        <td>Apple App Store URL:</td><td><input type="text" name="appstore" value = "http://itunes.apple.com/us/app/lets-do-it-world/id443259456?mt=8&ls=1" size=120/></td>        
+        <td>Apple iOs URL:</td><td><input type="text" name="appstore" value = "http://itunes.apple.com/us/app/lets-do-it-world/id443259456?mt=8&ls=1" size=120/></td>        
       </tr>
+      <tr>
+        <td>Windows Phone 7 URL:</td><td><input type="text" name="wp" value = "http://social.zune.net/redirect?type=phoneApp&id=c14e93aa-27d7-df11-a844-00237de2db9" size=120/></td>        
+      </tr>
+      <tr>
+        <td>RIM BlackBerry URL:</td><td><input type="text" name="bb" value = "http://appworld.blackberry.com/webstore/content/680" size=120/></td>        
+      </tr>
+      <tr>
+        <td>Symbian URL:</td><td><input type="text" name="sym" value = "" size=120/></td>        
+      </tr>
+
     </table>
 	<input type="submit" value = "Generate QR Code"/>
     </form>
