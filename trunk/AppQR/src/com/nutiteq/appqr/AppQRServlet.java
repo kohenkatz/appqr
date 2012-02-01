@@ -14,11 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 public class AppQRServlet extends HttpServlet {
-	private static final Logger log = Logger.getLogger(AppQRServlet.class.getName());
+	private static final String SHORT_SERVICE_URL = "http://is.gd/create.php?format=simple&url=";
+	private static final String DOWNLOAD_APP_URL = "http://qrappdownload.appspot.com/appqr?qr=1";
 	private static final String CHART_API_URL = "http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=";
+
+	private static final Logger log = Logger.getLogger(AppQRServlet.class.getName());
 
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		// TODO jaakl organize list of platforms better, with an array perhaps
+		// TODO refactor magic strings
+		
 		String andUrl = req.getParameter("androidmarket");
 		String appleUrl = req.getParameter("appstore");
 		String wpUrl = req.getParameter("wp");
@@ -69,7 +75,7 @@ public class AppQRServlet extends HttpServlet {
 			// request from web - generate UNIVERSAL QR code URL
 			resp.setContentType("text/html");
 			StringBuffer baseUrl = new StringBuffer(CHART_API_URL);
-			StringBuffer selectorUrl = new StringBuffer("http://qrappdownload.appspot.com/appqr?qr=1");
+			StringBuffer selectorUrl = new StringBuffer(DOWNLOAD_APP_URL);
 			if(andUrl != null)
 				selectorUrl.append("&androidmarket=").append(andUrl);
 			if(appleUrl != null)
@@ -107,7 +113,7 @@ public class AppQRServlet extends HttpServlet {
 	public String shorten(final String longUrl){
 		String serviceUrl = null;
 		try {
-			serviceUrl = "http://is.gd/create.php?format=simple&url="+URLEncoder.encode(longUrl,"UTF-8");
+			serviceUrl = SHORT_SERVICE_URL+URLEncoder.encode(longUrl,"UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			log.info(e.getMessage());
 			return null;
