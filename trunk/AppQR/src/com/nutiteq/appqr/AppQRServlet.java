@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @SuppressWarnings("serial")
 public class AppQRServlet extends HttpServlet {
 	private static final String SHORT_SERVICE_URL = "http://is.gd/create.php?format=simple&url=";
-	private static final String DOWNLOAD_APP_URL = "http://qrappdownload.appspot.com/appqr?qr=1";
+	private static final String DOWNLOAD_APP_URL = "http://m.appqr.mobi/appqr?qr=1";
 	private static final String CHART_API_URL = "http://chart.apis.google.com/chart?cht=qr&chs=350x350&chl=";
 
 	private static final Logger log = Logger.getLogger(AppQRServlet.class.getName());
