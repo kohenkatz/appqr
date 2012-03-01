@@ -52,7 +52,7 @@ public class AppQRServlet extends HttpServlet {
 			}else if(ua.contains("Windows Phone") && wpUrl != null){
 				log.info("forwarding to "+wpUrl);
 				resp.sendRedirect(resp.encodeRedirectURL(wpUrl));
-			}else if(ua.contains("BlackBerry") && bbUrl != null){
+			}else if((ua.contains("BlackBerry")||ua.contains("PlayBook")) && bbUrl != null){
 				log.info("forwarding to "+bbUrl);
 				resp.sendRedirect(resp.encodeRedirectURL(bbUrl));
 			}else if(ua.contains("Symbian") && symUrl != null){
